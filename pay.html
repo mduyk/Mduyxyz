@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thanh toán</title>
+</head>
+
+<body style="background:#020617;color:white;text-align:center">
+
+<h2>💳 Thanh toán</h2>
+
+<p>📦 Gói: <span id="pkg"></span></p>
+<p>💰 Giá: <span id="price"></span>đ</p>
+
+<hr>
+
+<p>STK: 0588807300000</p>
+<p>MB Bank</p>
+<p>Chủ TK: Cao Minh Duy</p>
+
+<button onclick="sendZalo()">Tôi đã thanh toán</button>
+
+<script>
+let name = localStorage.getItem("pendingProduct");
+let price = localStorage.getItem("pendingPrice");
+
+document.getElementById("pkg").innerText = name;
+document.getElementById("price").innerText = price;
+
+// ===== ZALO FIX (GIỮ LINK + RANDOM NỘI DUNG mduy-XXXX) =====
+function sendZalo(){
+
+let code = "mduy-" + Math.floor(1000 + Math.random() * 9000);
+
+let nd = `Tôi đã chuyển khoản ${price}đ - gói ${name} - mã ${code}. Kiểm tra giúp!`;
+
+window.location.href =
+"https://zalo.me/0328033706?text=" + encodeURIComponent(nd);
+}
+</script>
+
+</body>
+</html>
